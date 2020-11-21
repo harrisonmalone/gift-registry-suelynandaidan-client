@@ -1,0 +1,62 @@
+body {
+  font-family: sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: crimson;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  height: 50px;
+}
+
+.home {
+  font-size: x-large;
+}
+
+.give-info {
+  display: flex;
+  flex-wrap: wrap;
+  h4 {
+    max-width: 300px;
+  }
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.gift {
+  height: 500px;
+  margin: 10px 0px;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  .gift-attributes {
+    padding: 20px;
+  }
+}
+
+.gift-given {
+  height: 500px;
+  margin: 10px 0px;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  background: gainsboro;
+  .gift-attributes {
+    padding: 20px;
+  }
+}
+
+.btn {
+  margin-left: 10px;
+}
+
+.image {
+  display: block;
+  height: 300px;
+  margin: 0 auto;
+}
