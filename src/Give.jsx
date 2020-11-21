@@ -12,7 +12,7 @@ class Give extends React.Component {
 
   async componentDidMount() {
     const id = this.props.match.params.id;
-    const response = await fetch(`http://localhost:3000/gifts/${id}`);
+    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/gifts/${id}`);
     const gift = await response.json();
     this.setState({
       gift: gift,
@@ -28,7 +28,7 @@ class Give extends React.Component {
   onFormSubmit = async (e) => {
     e.preventDefault();
     const id = this.props.match.params.id;
-    await fetch(`http://localhost:3000/gifts/${id}`, {
+    await fetch(`${process.env.REACT_APP_BACKEND_URL}/${id}`, {
       method: "PUT",
       headers: {
         'Content-Type': 'application/json'

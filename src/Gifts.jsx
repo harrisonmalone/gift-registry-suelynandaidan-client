@@ -9,7 +9,7 @@ class Gifts extends React.Component {
   };
 
   async componentDidMount() {
-    const response = await fetch("http://localhost:3000/gifts");
+    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/gifts`);
     const gifts = await response.json();
     // split gifts and gifts given into two different arrays
     // give button removed

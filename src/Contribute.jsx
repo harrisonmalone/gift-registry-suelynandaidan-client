@@ -13,7 +13,7 @@ class Contribute extends React.Component {
 
   async componentDidMount() {
     const id = this.props.match.params.id;
-    const response = await fetch(`http://localhost:3000/gifts/${id}`);
+    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/${id}`);
     const gift = await response.json();
     this.setState({
       gift: gift,
