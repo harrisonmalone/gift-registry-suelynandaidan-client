@@ -7,7 +7,8 @@ class Give extends React.Component {
   state = {
     gift: null,
     name: "",
-    message: ""
+    message: "",
+    email: ""
   };
 
   async componentDidMount() {
@@ -33,7 +34,7 @@ class Give extends React.Component {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ name: this.state.name, give: true })
+      body: JSON.stringify({ name: this.state.name, email: this.state.email })
     });
     this.setState({
       message: "Successfully gifted! ❤️"
@@ -44,7 +45,7 @@ class Give extends React.Component {
   };
 
   render() {
-    const { gift, name, message } = this.state;
+    const { gift, name, message, email } = this.state;
     return (
       gift && (
         <>
@@ -70,6 +71,17 @@ class Give extends React.Component {
                   onChange={this.onInputChange}
                   value={name}
                   placeholder="Harrison Malone"
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="email">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  onChange={this.onInputChange}
+                  value={email}
+                  placeholder="harrison.malone@gmail.com"
                 />
               </div>
               <div className="form-group">

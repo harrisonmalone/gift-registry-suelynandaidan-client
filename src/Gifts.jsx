@@ -53,6 +53,7 @@ class Gifts extends React.Component {
                   <h3 className="gift-price">
                     ${gift.price}
                   </h3>
+                  <p>Reach out to {gift.user.name} at {gift.user.email} if you'd like to also contribute!</p>
                 </div>
                 <img className="image" alt="gift" src={gift.image_url} />
               </div>
