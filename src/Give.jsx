@@ -28,7 +28,7 @@ class Give extends React.Component {
   onFormSubmit = async (e) => {
     e.preventDefault();
     const id = this.props.match.params.id;
-    await fetch(`${process.env.REACT_APP_BACKEND_URL}/${id}`, {
+    await fetch(`${process.env.REACT_APP_BACKEND_URL}/gifts/${id}`, {
       method: "PUT",
       headers: {
         'Content-Type': 'application/json'
@@ -36,11 +36,11 @@ class Give extends React.Component {
       body: JSON.stringify({ name: this.state.name, give: true })
     });
     this.setState({
-      message: "Successfully added gift! ❤️"
+      message: "Successfully gifted! ❤️"
     })
     setTimeout(() => {
       this.props.history.push("/gifts")
-    }, 2000)
+    }, 1000)
   };
 
   render() {
