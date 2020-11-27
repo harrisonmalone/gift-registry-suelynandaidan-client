@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons";
 
@@ -8,12 +8,15 @@ class Give extends React.Component {
     gift: null,
     name: "",
     message: "",
-    email: ""
+    email: "",
+    selectedOption: null
   };
 
   async componentDidMount() {
     const id = this.props.match.params.id;
-    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/gifts/${id}`);
+    const response = await fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/gifts/${id}`
+    );
     const gift = await response.json();
     this.setState({
       gift: gift,
@@ -26,26 +29,33 @@ class Give extends React.Component {
     });
   };
 
+  onRadioChange = (e) => {
+    this.setState({
+      selectedOption: e.target.value
+    })
+  }
+
   onFormSubmit = async (e) => {
     e.preventDefault();
     const id = this.props.match.params.id;
     await fetch(`${process.env.REACT_APP_BACKEND_URL}/gifts/${id}`, {
       method: "PUT",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ name: this.state.name, email: this.state.email })
+      body: JSON.stringify({ name: this.state.name, email: this.state.email }),
     });
     this.setState({
-      message: "Successfully gifted! ❤️"
-    })
+      message: "Successfully gifted! ❤️",
+    });
     setTimeout(() => {
-      this.props.history.push("/gifts")
-    }, 1000)
+      this.props.history.push("/gifts");
+    }, 1000);
   };
 
   render() {
     const { gift, name, message, email } = this.state;
+    console.log(this.state);
     return (
       gift && (
         <>
@@ -83,6 +93,35 @@ class Give extends React.Component {
                   value={email}
                   placeholder="harrison.malone@gmail.com"
                 />
+              </div>
+              <div className="form-group">
+                <label htmlFor="email">Contributors<span style={{fontSize: "x-small"}}> *Optional</span></label>
+                <div className="radio-group">
+                  <input
+                    type="radio"
+                    name="contributions-wanted"
+                    id="contributions-wanted"
+                    value="contributions-wanted"
+                    onChange={this.onRadioChange}
+                    checked={this.state.selectedOption === "contributions-wanted"}
+                  />
+                  <span style={{ marginLeft: "10px" }}>
+                    I would like other people to also contribute to this gift
+                  </span>
+                </div>
+                <div className="radio-group">
+                  <input
+                    type="radio"
+                    name="group"
+                    id="group"
+                    value="group"
+                    onChange={this.onRadioChange}
+                    checked={this.state.selectedOption === "group"}
+                  />
+                  <span style={{ marginLeft: "10px" }}>
+                    I am marking this gift off on behalf of a group
+                  </span>
+                </div>
               </div>
               <div className="form-group">
                 <input id="submit" type="submit" value="Submit" />

@@ -9,6 +9,8 @@ class Gifts extends React.Component {
   };
 
   async componentDidMount() {
+    // 1. And at the top of the main page say, scroll to the bottom if you would prefer to contribute to a larger gift
+    // 2. Add a tick box on the give page which says "I would like other people to also contribute to this gift?" vs "I am marking this gift off on behalf of a group" or something?
     const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/gifts`);
     const gifts = await response.json();
     this.setState({
@@ -26,6 +28,9 @@ class Gifts extends React.Component {
               Back to wedding <FontAwesomeIcon icon={faArrowCircleLeft} />
             </a>
           </nav>
+          <div class="contribute-message">
+            <p><a href="#given">Scroll to the bottom</a> if you would prefer to contribute to a larger gift</p>
+          </div>
           <h1>Gifts 🎁</h1>
           {gifts[0].length < 1 ? <h2>All gifts given 😀</h2> : gifts[0].map((gift, index) => {
             return (
@@ -44,7 +49,7 @@ class Gifts extends React.Component {
             );
           })}
           <hr style={{marginTop: "30px"}} />
-          <h1>Givens given ❤️</h1>
+          <h1 id="given">Givens given ❤️</h1>
           {gifts[1].length < 1 ? <h2>No gifts given 😿</h2> : gifts[1].map((gift, index) => {
             return (
               <div key={index} className="gift-given">
