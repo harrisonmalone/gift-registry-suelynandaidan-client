@@ -9,7 +9,7 @@ class Give extends React.Component {
     name: "",
     message: "",
     email: "",
-    selectedOption: null
+    selectedOption: null,
   };
 
   async componentDidMount() {
@@ -31,9 +31,9 @@ class Give extends React.Component {
 
   onRadioChange = (e) => {
     this.setState({
-      selectedOption: e.target.value
-    })
-  }
+      selectedOption: e.target.value,
+    });
+  };
 
   onFormSubmit = async (e) => {
     e.preventDefault();
@@ -43,7 +43,11 @@ class Give extends React.Component {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ name: this.state.name, email: this.state.email }),
+      body: JSON.stringify({
+        name: this.state.name,
+        email: this.state.email,
+        selectedOption: this.state.selectedOption,
+      }),
     });
     this.setState({
       message: "Successfully gifted! ❤️",
@@ -54,8 +58,7 @@ class Give extends React.Component {
   };
 
   render() {
-    const { gift, name, message, email } = this.state;
-    console.log(this.state);
+    const { gift, name, message, email, selectedOption } = this.state;
     return (
       gift && (
         <>
@@ -95,7 +98,10 @@ class Give extends React.Component {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="email">Contributors<span style={{fontSize: "x-small"}}> *Optional</span></label>
+                <label htmlFor="email">
+                  Contributors
+                  <span style={{ fontSize: "x-small" }}> *Optional</span>
+                </label>
                 <div className="radio-group">
                   <input
                     type="radio"
@@ -103,7 +109,7 @@ class Give extends React.Component {
                     id="contributions-wanted"
                     value="contributions-wanted"
                     onChange={this.onRadioChange}
-                    checked={this.state.selectedOption === "contributions-wanted"}
+                    checked={selectedOption === "contributions-wanted"}
                   />
                   <span style={{ marginLeft: "10px" }}>
                     I would like other people to also contribute to this gift
@@ -116,7 +122,7 @@ class Give extends React.Component {
                     id="group"
                     value="group"
                     onChange={this.onRadioChange}
-                    checked={this.state.selectedOption === "group"}
+                    checked={selectedOption === "group"}
                   />
                   <span style={{ marginLeft: "10px" }}>
                     I am marking this gift off on behalf of a group

@@ -28,7 +28,7 @@ class Gifts extends React.Component {
               Back to wedding <FontAwesomeIcon icon={faArrowCircleLeft} />
             </a>
           </nav>
-          <div class="contribute-message">
+          <div className="contribute-message">
             <p><a href="#given">Scroll to the bottom</a> if you would prefer to contribute to a larger gift</p>
           </div>
           <h1>Gifts 🎁</h1>
@@ -49,8 +49,8 @@ class Gifts extends React.Component {
             );
           })}
           <hr style={{marginTop: "30px"}} />
-          <h1 id="given">Givens given ❤️</h1>
-          {gifts[1].length < 1 ? <h2>No gifts given 😿</h2> : gifts[1].map((gift, index) => {
+          <h1 id="given">Contributions 🤝</h1>
+          {gifts[1].length < 1 ? <h2>No gifts open for public contribution 😿</h2> : gifts[1].map((gift, index) => {
             return (
               <div key={index} className="gift-given">
                 <div className="gift-attributes">
@@ -58,7 +58,7 @@ class Gifts extends React.Component {
                   <h3 className="gift-price">
                     ${gift.price}
                   </h3>
-                  <p>Reach out to {gift.user.name} at {gift.user.email} if you'd like to also contribute!</p>
+                  {<p>Reach out to {gift.user.name} at {gift.user.email} if you'd like to also contribute</p>}
                 </div>
                 <img className="image" alt="gift" src={gift.image_url} />
               </div>
