@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons";
-import { images } from './utils/images'
+import { images } from "./utils/images";
 
 class Give extends React.Component {
   state = {
@@ -11,7 +11,7 @@ class Give extends React.Component {
     message: "",
     email: "",
     selectedOption: null,
-    id: this.props.match.params.id
+    id: this.props.match.params.id,
   };
 
   async componentDidMount() {
@@ -114,7 +114,11 @@ class Give extends React.Component {
                     checked={selectedOption === "contributions-wanted"}
                   />
                   <span style={{ marginLeft: "10px" }}>
-                    I would like other people (that I might not know) to also contribute to this gift. When you select this your email will be shared publicly at the bottom of the "/gifts" page alongside the item. Those interested in contributing can then reach out to you. 
+                    I would like other people (that I might not know) to also
+                    contribute to this gift. When you select this your email
+                    will be shared publicly at the bottom of the "/gifts" page
+                    alongside the item. Those interested in contributing can
+                    then reach out to you.
                   </span>
                 </div>
                 <div className="radio-group">
@@ -127,7 +131,11 @@ class Give extends React.Component {
                     checked={selectedOption === "group"}
                   />
                   <span style={{ marginLeft: "10px" }}>
-                    I am marking this gift off on behalf of a group of friends or family (people that I already know). Your email won't be shared publicly but you'll be responsible for organizing the purchase of the item amongst people who already have your contact details. 
+                    I am marking this gift off on behalf of a group of friends
+                    or family (people that I already know). Your email won't be
+                    shared publicly but you'll be responsible for organizing the
+                    purchase of the item amongst people who already have your
+                    contact details.
                   </span>
                 </div>
               </div>

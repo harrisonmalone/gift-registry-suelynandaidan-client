@@ -33,32 +33,23 @@ a {
 .gift {
   margin: 15px 0px;
   border-radius: 12px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   padding: 20px 0px;
   .gift-attributes {
     padding: 20px;
   }
 }
 
-.gift-name {
-  // margin: 0px;
-}
-
 .gift-given {
   margin: 15px 0px;
   border-radius: 12px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   opacity: 0.7;
   padding: 20px 0px;
   .gift-attributes {
     padding: 20px;
   }
 }
-
-.btn {
-  // margin-left: 10px;
-}
-
 .image {
   display: block;
   height: 300px;
