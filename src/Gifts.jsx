@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons";
+import { images } from './utils/images'
 
 class Gifts extends React.Component {
   state = {
@@ -13,13 +14,27 @@ class Gifts extends React.Component {
     // 2. Add a tick box on the give page which says "I would like other people to also contribute to this gift?" vs "I am marking this gift off on behalf of a group" or something?
     const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/gifts`);
     const gifts = await response.json();
+    const giftsWithImages = gifts.map((gift, index) => {
+      gift.image = images[index]
+      return gift
+    })
+    const contributionsWanted = []
+    const notGiven = []
+    giftsWithImages.forEach((gift) => {
+      if (!gift.user) {
+        notGiven.push(gift)
+      } else if (gift.contributions_wanted) {
+        contributionsWanted.push(gift)
+      }
+    })
     this.setState({
-      gifts: gifts,
+      gifts: [notGiven, contributionsWanted]
     });
   }
 
   render() {
     const { gifts } = this.state;
+    console.log(gifts)
     return (
       gifts && (
         <>
@@ -29,41 +44,64 @@ class Gifts extends React.Component {
             </a>
           </nav>
           <div className="contribute-message">
-            <p><a href="#given">Scroll to the bottom</a> if you would prefer to contribute to a larger gift</p>
+            <p>
+              <a href="#given">Scroll to the bottom</a> if you would prefer to
+              contribute to a larger gift
+            </p>
           </div>
           <h1>Gifts 🎁</h1>
-          {gifts[0].length < 1 ? <h2>All gifts given 😀</h2> : gifts[0].map((gift, index) => {
-            return (
-              <div key={index} className="gift">
-                <div className="gift-attributes">
-                  <h3 className="gift-name">{gift.name}</h3>
-                  <h3 className="gift-price">
-                    ${gift.price}
+          {gifts[0].length < 1 ? (
+            <h2>All gifts given 😀</h2>
+          ) : (
+            gifts[0].map((gift, index) => {
+              return (
+                <div key={index} className="gift">
+                  <div className="gift-attributes">
+                    <h3 className="gift-name">{gift.name}
+                    </h3>
                     <Link to={`/gifts/${gift.id}/give`}>
-                      <button className="btn give">Give</button>
+                        <button className="btn give">Give</button>
                     </Link>
-                  </h3>
+                    {
+                      gift.specific_item ? (
+                      <h3 className="gift-price">
+                        This is a specific item. It's approximate value is ${gift.price} and you can purchase it at <a href={gift.link} target="_blank" rel="noreferrer">this retailer</a>.
+                      </h3>
+                      ) : (
+                        <h3>This item can be purchased from any retailer at any price! 🙌</h3>
+                      )
+                    }
+                  </div>
+                  <img className="image" alt="gift" src={gift.image} />
                 </div>
-                <img className="image" alt="gift" src={gift.image_url} />
-              </div>
-            );
-          })}
-          <hr style={{marginTop: "30px"}} />
+              );
+            })
+          )}
+          <hr style={{ marginTop: "30px" }} />
           <h1 id="given">Contributions 🤝</h1>
-          {gifts[1].length < 1 ? <h2>No gifts open for public contribution 😿</h2> : gifts[1].map((gift, index) => {
-            return (
-              <div key={index} className="gift-given">
-                <div className="gift-attributes">
-                  <h3 className="gift-name">{gift.name}</h3>
-                  <h3 className="gift-price">
-                    ${gift.price}
-                  </h3>
-                  {<p>Reach out to {gift.user.name} at {gift.user.email} if you'd like to also contribute</p>}
+          {gifts[1].length < 1 ? (
+            <h2>No gifts open for public contribution 😿</h2>
+          ) : (
+            gifts[1].map((gift, index) => {
+              return (
+                <div key={index} className="gift-given">
+                  <div className="gift-attributes">
+                    <h3 className="gift-name">{gift.name}</h3>
+                    <h3 className="gift-price">
+                        This is a specific item. It's approximate value is ${gift.price} and you can purchase it at <a href={gift.link}>this retailer</a>.
+                    </h3>
+                    {
+                      <p>
+                        Reach out to {gift.user.name} at {gift.user.email} if
+                        you'd like to also contribute to this gift
+                      </p>
+                    }
+                  </div>
+                  <img className="image" alt="gift" src={gift.image_url} />
                 </div>
-                <img className="image" alt="gift" src={gift.image_url} />
-              </div>
-            );
-          })}
+              );
+            })
+          )}
         </>
       )
     );

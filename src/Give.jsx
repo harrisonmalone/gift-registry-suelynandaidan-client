@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons";
+import { images } from './utils/images'
 
 class Give extends React.Component {
   state = {
@@ -10,6 +11,7 @@ class Give extends React.Component {
     message: "",
     email: "",
     selectedOption: null,
+    id: this.props.match.params.id
   };
 
   async componentDidMount() {
@@ -58,7 +60,7 @@ class Give extends React.Component {
   };
 
   render() {
-    const { gift, name, message, email, selectedOption } = this.state;
+    const { gift, name, message, email, selectedOption, id } = this.state;
     return (
       gift && (
         <>
@@ -69,7 +71,7 @@ class Give extends React.Component {
           </nav>
           <div className="give-info">
             <h4>You're giving: {gift.name}</h4>
-            <img className="image" alt="gift" src={gift.image_url} />
+            <img className="image" alt="gift" src={images[id - 1]} />
           </div>
           <div>
             <h4>We'll just need some details 🎁</h4>
@@ -112,7 +114,7 @@ class Give extends React.Component {
                     checked={selectedOption === "contributions-wanted"}
                   />
                   <span style={{ marginLeft: "10px" }}>
-                    I would like other people to also contribute to this gift
+                    I would like other people (that I might not know) to also contribute to this gift
                   </span>
                 </div>
                 <div className="radio-group">
@@ -125,7 +127,7 @@ class Give extends React.Component {
                     checked={selectedOption === "group"}
                   />
                   <span style={{ marginLeft: "10px" }}>
-                    I am marking this gift off on behalf of a group
+                    I am marking this gift off on behalf of a group of friends or family (people that I already know)
                   </span>
                 </div>
               </div>
