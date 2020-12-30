@@ -31,10 +31,10 @@ a {
 }
 
 .gift {
-  height: 500px;
-  margin: 10px 0px;
+  margin: 15px 0px;
   border-radius: 12px;
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  padding: 20px 0px;
   .gift-attributes {
     padding: 20px;
   }
@@ -45,11 +45,11 @@ a {
 }
 
 .gift-given {
-  height: 550px;
-  margin: 10px 0px;
+  margin: 15px 0px;
   border-radius: 12px;
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   opacity: 0.7;
+  padding: 20px 0px;
   .gift-attributes {
     padding: 20px;
   }
