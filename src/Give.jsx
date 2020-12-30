@@ -114,7 +114,7 @@ class Give extends React.Component {
                     checked={selectedOption === "contributions-wanted"}
                   />
                   <span style={{ marginLeft: "10px" }}>
-                    I would like other people (that I might not know) to also contribute to this gift
+                    I would like other people (that I might not know) to also contribute to this gift. When you do this your email will be shared publicly at the bottom of the "/gifts" page alongside the item. Those interested in contributing can then reach out to you. 
                   </span>
                 </div>
                 <div className="radio-group">
@@ -127,7 +127,7 @@ class Give extends React.Component {
                     checked={selectedOption === "group"}
                   />
                   <span style={{ marginLeft: "10px" }}>
-                    I am marking this gift off on behalf of a group of friends or family (people that I already know)
+                    I am marking this gift off on behalf of a group of friends or family (people that I already know). Your email won't be shared publicly but you'll be responsible for organizing the purchasing of the item amongst people who already have your contact details. 
                   </span>
                 </div>
               </div>
