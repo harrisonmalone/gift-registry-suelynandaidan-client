@@ -97,7 +97,7 @@ class Gifts extends React.Component {
                       </p>
                     }
                   </div>
-                  <img className="image" alt="gift" src={gift.image_url} />
+                  <img className="image" alt="gift" src={gift.image} />
                 </div>
               );
             })
