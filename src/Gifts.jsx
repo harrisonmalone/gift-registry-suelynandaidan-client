@@ -34,7 +34,6 @@ class Gifts extends React.Component {
 
   render() {
     const { gifts } = this.state;
-    console.log(gifts)
     return (
       gifts && (
         <>
