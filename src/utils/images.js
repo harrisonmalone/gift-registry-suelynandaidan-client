@@ -32,11 +32,15 @@ import candle from "../images/candles.jpg";
 import mower from "../images/mower.jpg";
 import blower from "../images/blower.jpg";
 import makitaCharger from "../images/makita_charger.jpg";
+import mixer from "../images/mixer.jpeg";
+import serverware from "../images/serverware.jpg";
+import foodProcessor from "../images/food_processor.jpg";
+import mortar from "../images/mortor.jpg";
+import setOfUtensils from "../images/set_of_utensils.jpg";
 
 export const images = [
   weberQ,
   lineTrimmer,
-  electricBeater,
   kingSizeBedding,
   towelSet,
   fruitBowl,
@@ -45,9 +49,12 @@ export const images = [
   indoorPotPlants,
   castIron,
   wineFridge,
+  mixer,
+  mortar,
+  setOfUtensils,
+  foodProcessor,
+  serverware,
   vase,
-  barStools,
-  officeChair,
   makitaDrill,
   cutlerySet,
   drinkingGlasses,
@@ -56,7 +63,6 @@ export const images = [
   espressoMugs,
   cocktailJug,
   sodastream,
-  coffeeMachine,
   knifeSet,
   microwave,
   fryingPan,
@@ -66,6 +72,6 @@ export const images = [
   mower,
   blower,
   makitaCharger,
-  weberQCover,
   weberQStand,
+  weberQCover,
 ];
