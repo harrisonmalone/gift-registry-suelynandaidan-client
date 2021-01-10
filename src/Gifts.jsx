@@ -20,20 +20,24 @@ class Gifts extends React.Component {
     });
     const contributionsWanted = [];
     const notGiven = [];
+    const given = [];
     giftsWithImages.forEach((gift) => {
       if (!gift.user) {
         notGiven.push(gift);
       } else if (gift.contributions_wanted) {
         contributionsWanted.push(gift);
+      } else {
+        given.push(gift)
       }
     });
     this.setState({
-      gifts: [notGiven, contributionsWanted],
+      gifts: [notGiven, contributionsWanted, given],
     });
   }
 
   render() {
     const { gifts } = this.state;
+    console.log(gifts)
     return (
       gifts && (
         <>
@@ -99,9 +103,25 @@ class Gifts extends React.Component {
                     {
                       <p>
                         Reach out to {gift.user.name} at {gift.user.email} if
-                        you'd like to also contribute to this gift
+                        you'd like to also contribute to this gift.
                       </p>
                     }
+                  </div>
+                  <img className="image" alt="gift" src={gift.image} />
+                </div>
+              );
+            })
+          )}
+          <hr style={{ marginTop: "30px" }} />
+          <h1 id="given">Given ❤️</h1>
+          {gifts[2].length < 1 ? (
+            <h2>No gifts given as yet!</h2>
+          ) : (
+            gifts[2].map((gift, index) => {
+              return (
+                <div key={index} className="gift-given">
+                  <div className="gift-attributes">
+                    <h3 className="gift-name">{gift.name}</h3>
                   </div>
                   <img className="image" alt="gift" src={gift.image} />
                 </div>

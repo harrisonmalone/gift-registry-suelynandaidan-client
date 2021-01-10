@@ -109,7 +109,7 @@ class Give extends React.Component {
                     type="radio"
                     name="contributions-wanted"
                     id="contributions-wanted"
-                    class="contributions"
+                    className="contributions"
                     value="contributions-wanted"
                     onChange={this.onRadioChange}
                     checked={selectedOption === "contributions-wanted"}
@@ -127,7 +127,7 @@ class Give extends React.Component {
                     type="radio"
                     name="group"
                     id="group"
-                    class="contributions"
+                    className="contributions"
                     value="group"
                     onChange={this.onRadioChange}
                     checked={selectedOption === "group"}
