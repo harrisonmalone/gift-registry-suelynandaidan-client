@@ -74,4 +74,9 @@ export const images = [
   makitaCharger,
   weberQStand,
   weberQCover,
+  serverware,
+  serverware,
+  serverware,
+  candle,
+  candle
 ];
